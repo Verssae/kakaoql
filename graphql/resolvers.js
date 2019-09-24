@@ -1,9 +1,9 @@
-import { getPlaces, } from "./db";
+import { getPlacesByCategory, getPlacesByKeword } from "./db";
 
 const resolvers = {
   Query: {
-    places: (_, { request }) => getPlaces(request)
-    
+    keword: (_, { request }) => getPlacesByKeword(request),
+    category: (_, {request}) => getPlacesByCategory(request)
   }
 };
 

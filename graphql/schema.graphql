@@ -1,6 +1,11 @@
+type Meta {
+	total_count: Int
+	pageable_count: Int
+	is_end: Bool
+}
 type Place {
 	address_name: String
-	category_group_code: String
+	category_group_code: Code
 	category_group_name: String
 	category_name: String!
 	distance: Int!
@@ -9,12 +14,12 @@ type Place {
 	place_name: String
 	place_url: String
 	road_address_name: String
-	x:  Float
+	x: Float
 	y: Float
 }
 
 input Request {
-	query: String!
+	query: String
 	category_group_code: Code
 	x: Float
 	y: Float
@@ -52,5 +57,9 @@ enum Sort {
 }
 
 type Query {
-	places(request: Request!): [Place]
+	address(query: Strign!, page: Int, size: Int): [place]
+	coord2region(x: Float!, y: Float!, lang: String): [place]
+	coord2address(x: Float!, y: Float!): [place]
+	keword(request: Request!): [Place]
+	category(request: Request!): [Place]
 }
