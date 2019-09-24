@@ -1,0 +1,56 @@
+type Place {
+	address_name: String
+	category_group_code: String
+	category_group_name: String
+	category_name: String!
+	distance: Int!
+	id: Int!
+	phone: String
+	place_name: String
+	place_url: String
+	road_address_name: String
+	x:  Float
+	y: Float
+}
+
+input Request {
+	query: String!
+	category_group_code: Code
+	x: Float
+	y: Float
+	radius: Int
+	rect: String
+	page: Int
+	size: Int
+	sort: Sort
+}
+
+enum Code {
+	MT1
+	CS2
+	PS3
+	SC4
+	AC5
+	PK6
+	OL7
+	SW8
+	BK9
+	CT1
+	AG2
+	PO3
+	AT4
+	AD5
+	FD6
+	CE7
+	HP8
+	PM9
+}
+
+enum Sort {
+	distance
+	accuracy
+}
+
+type Query {
+	places(request: Request!): [Place]
+}
